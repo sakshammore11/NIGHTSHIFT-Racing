@@ -105,18 +105,20 @@ public class CarController : MonoBehaviour
 
     void SetupNeonUnderglow()
     {
-        // Add smooth cyan underglow light beneath the chassis for neon night look
+        // Add soft cyan underglow light beneath the chassis pointing at the ground
         Transform ug = transform.Find("NeonUnderglow");
         if (ug == null)
         {
             GameObject ugObj = new GameObject("NeonUnderglow");
             ugObj.transform.SetParent(transform);
-            ugObj.transform.localPosition = new Vector3(0f, 0.1f, 0f);
+            ugObj.transform.localPosition = new Vector3(0f, -0.4f, 0f); // Positioned below chassis
             underglowLight = ugObj.AddComponent<Light>();
-            underglowLight.type = LightType.Point;
-            underglowLight.color = new Color(0f, 0.85f, 1f); // Neon Cyan
-            underglowLight.intensity = 4.0f;
-            underglowLight.range = 8.0f;
+            underglowLight.type = LightType.Spot; // Spot light facing downward
+            underglowLight.transform.localRotation = Quaternion.Euler(90f, 0f, 0f);
+            underglowLight.color = new Color(0f, 0.75f, 1f); // Subtle Neon Cyan
+            underglowLight.intensity = 2.0f;
+            underglowLight.range = 3.0f;
+            underglowLight.spotAngle = 120f;
         }
     }
 
