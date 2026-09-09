@@ -13,7 +13,7 @@ public class WebGLBuilder
             "Assets/Scenes/GarageScene.unity"
         };
 
-        string buildPath = "Builds/WebGL";
+        string buildPath = "public";
 
         if (!Directory.Exists(buildPath))
             Directory.CreateDirectory(buildPath);
